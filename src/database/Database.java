@@ -20,12 +20,36 @@ import java.util.function.Predicate;
 public abstract class Database<T extends Entity> {
 
     private static Users usersDb;
+    private static Books booksDb;
+    private static BookStorages bookStoragesDb;
+    private static BookOrders bookOrdersDb;
 
     public static Users getUsersDb() {
         if (usersDb == null) {
             usersDb = new Users();
         }
         return usersDb;
+    }
+
+    public static Books getBooksDb() {
+        if (booksDb == null) {
+            booksDb = new Books();
+        }
+        return booksDb;
+    }
+
+    public static BookStorages getBookStoragesDb() {
+        if (bookStoragesDb == null) {
+            bookStoragesDb = new BookStorages();
+        }
+        return bookStoragesDb;
+    }
+
+    public static BookOrders getBookOrdersDb() {
+        if (bookOrdersDb == null) {
+            bookOrdersDb = new BookOrders();
+        }
+        return bookOrdersDb;
     }
 
     protected static Document loadDocumentFromString(String xmlString) {

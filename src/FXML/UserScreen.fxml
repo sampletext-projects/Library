@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="500.0" prefWidth="500.0"
+      xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="controllers.UserScreenController">
+    <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0">
+
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefWidth="230">
+                <Label fx:id="greetingLabel" text="GreetingLabel"/>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefWidth="230">
+                <Button onAction="#onButtonMyBooksClick" prefWidth="140" text="My Orders"/>
+            </HBox>
+        </HBox>
+
+        <HBox alignment="CENTER" prefHeight="25"/>
+
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefWidth="230">
+                <Label alignment="CENTER" prefWidth="230" text="Library">
+                    <font>
+                        <Font size="25.0"/>
+                    </font>
+                </Label>
+            </VBox>
+        </HBox>
+
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefWidth="460">
+                <TableView fx:id="shopStorageTable" prefHeight="230.0" prefWidth="460.0">
+                    <columns>
+                        <TableColumn fx:id="columnAuthor" text="Author"/>
+                        <TableColumn fx:id="columnTitle" text="Title"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </HBox>
+
+        <Separator/>
+
+        <HBox alignment="CENTER" prefHeight="25"/>
+
+        <Separator/>
+
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefWidth="230"/>
+            <HBox alignment="CENTER_RIGHT" prefWidth="230">
+                <HBox alignment="CENTER_RIGHT" prefWidth="230">
+                    <Button onAction="#onButtonTakeBookClick" prefWidth="160" text="Take Book"/>
+                </HBox>
+            </HBox>
+        </HBox>
+
+        <HBox alignment="CENTER" prefHeight="25"/>
+
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefWidth="230"/>
+            <VBox alignment="CENTER_RIGHT" prefWidth="230">
+                <HBox alignment="CENTER_RIGHT" prefWidth="230">
+                    <Button onAction="#onButtonLogOutClick" prefWidth="100" text="Log out"/>
+                </HBox>
+            </VBox>
+        </HBox>
+
+    </VBox>
+</HBox>

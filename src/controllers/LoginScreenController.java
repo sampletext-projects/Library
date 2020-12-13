@@ -33,17 +33,13 @@ public class LoginScreenController {
                 // AdminScreenController adminScreenController = FXMLHelper.loadScreenReturnController("AdminScreen");
                 // adminScreenController.preload();
                 break;
-            case "Operator":
+            case "Librarian":
                 // UserScreenController userScreenController = FXMLHelper.loadScreenReturnController("UserScreen");
                 // userScreenController.preload();
                 break;
-            case "Client":
+            case "Reader":
                 // ClientScreenController clientScreenController = FXMLHelper.loadScreenReturnController("ClientScreen");
                 // clientScreenController.preload();
-                break;
-            case "Hotel":
-                // HotelScreenController hotelScreenController = FXMLHelper.loadScreenReturnController("HotelScreen");
-                // hotelScreenController.preload();
                 break;
         }
     }
