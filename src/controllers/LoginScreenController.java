@@ -30,16 +30,16 @@ public class LoginScreenController {
         User.activeUser = loginedUser;
         switch (loginedUser.getPosition()) {
             case "Admin":
-                // AdminScreenController adminScreenController = FXMLHelper.loadScreenReturnController("AdminScreen");
-                // adminScreenController.preload();
+                AdminScreenController adminScreenController = FXMLHelper.loadScreenReturnController("AdminScreen");
+                adminScreenController.preload();
                 break;
             case "Librarian":
-                // UserScreenController userScreenController = FXMLHelper.loadScreenReturnController("UserScreen");
+                // ReaderScreenController userScreenController = FXMLHelper.loadScreenReturnController("LibrarianScreen");
                 // userScreenController.preload();
                 break;
             case "Reader":
-                // ClientScreenController clientScreenController = FXMLHelper.loadScreenReturnController("ClientScreen");
-                // clientScreenController.preload();
+                ReaderScreenController readerScreenController = FXMLHelper.loadScreenReturnController("ReaderScreen");
+                readerScreenController.preload();
                 break;
         }
     }

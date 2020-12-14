@@ -12,9 +12,12 @@ public class BookOrder extends Entity {
     private int userId;
     private User user;
 
-    public BookOrder(int id) {
+    public BookOrder(int id, int bookId, int userId) {
         super(id);
+        setUserId(userId);
+        setBookId(bookId);
     }
+
     public BookOrder() {
         super(-1);
     }
@@ -43,6 +46,24 @@ public class BookOrder extends Entity {
 
     public User getUser() {
         return user;
+    }
+
+    @Override
+    public BookOrder push() {
+        super.push();
+        return this;
+    }
+
+    @Override
+    public BookOrder pull() {
+        super.pull();
+        return this;
+    }
+
+    @Override
+    public BookOrder erase() {
+        super.erase();
+        return this;
     }
 
     @Override
