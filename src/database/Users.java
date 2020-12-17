@@ -51,11 +51,7 @@ public class Users extends Database<User> {
     }
 
     public User selectByLoginAndPassword(String login, String password) {
-        List<User> userList = select(u -> u.getLogin().equals(login) && u.getPassword().equals(password));
-        if (userList.isEmpty()) {
-            return null;
-        }
-        return userList.get(0);
+        return selectOne(u -> u.getLogin().equals(login) && u.getPassword().equals(password));
     }
 
     @Override

@@ -31,7 +31,7 @@ public class RegistrationScreenController {
         }
 
         User user = new User(-1, login, password, position, name).push();
-
+        FXMLHelper.alertAndWait("Success", "You were registered", "CONGRATULATIONS");
         // If needed, initialize related entities for user here
 
         FXMLHelper.loadScreen("LoginScreen");

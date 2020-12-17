@@ -17,15 +17,15 @@ public class BookStorages extends Database<BookStorage> {
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
             shopStorage.setId(Integer.parseInt(Utils.getTag(element, "id")));
-            Node entitiesNode = Utils.getTagNode(element, "books");
-            NodeList shop_entity_idNodes = ((Element)entitiesNode).getElementsByTagName("id");
-            List<Integer> entities = new ArrayList<>();
-            for (int i = 0; i < shop_entity_idNodes.getLength(); i++) {
-                if(shop_entity_idNodes.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                    entities.add(Integer.parseInt(shop_entity_idNodes.item(i).getTextContent()));
+            Node booksNode = Utils.getTagNode(element, "books");
+            NodeList books_ids = ((Element)booksNode).getElementsByTagName("id");
+            List<Integer> ids = new ArrayList<>();
+            for (int i = 0; i < books_ids.getLength(); i++) {
+                if(books_ids.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    ids.add(Integer.parseInt(books_ids.item(i).getTextContent()));
                 }
             }
-            shopStorage.setBooksIds(entities);
+            shopStorage.setBooksIds(ids);
         }
         return shopStorage;
     }

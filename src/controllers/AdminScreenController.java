@@ -63,7 +63,7 @@ public class AdminScreenController implements FXMLHelper.PreloadableController, 
     public void onButtonEditClick(ActionEvent actionEvent) {
         int selectedIndex = booksTableView.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1) {
-            FXMLHelper.alertAndWait("Error", "Book is not selected", "Please select an entity to edit!");
+            FXMLHelper.alertAndWait("Error", "Book is not selected", "Please select a book to edit!");
             return;
         }
         Book book = booksTableView.getItems().get(selectedIndex);
