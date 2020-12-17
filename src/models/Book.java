@@ -1,5 +1,6 @@
 package models;
 
+import database.Books;
 import database.Database;
 
 public class Book extends Entity {
@@ -58,6 +59,11 @@ public class Book extends Entity {
     public Book push() {
         super.push();
         return this;
+    }
+
+    @Override
+    protected Books getDatabase() {
+        return Database.getBooksDb();
     }
 
     @Override

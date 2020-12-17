@@ -1,10 +1,12 @@
 package controllers;
 
+import database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import models.Book;
+import models.BookStorage;
 import utils.FXMLHelper;
 
 public class BookScreenController implements FXMLHelper.PreloadableController {
@@ -43,12 +45,16 @@ public class BookScreenController implements FXMLHelper.PreloadableController {
         }
 
         if (activeBook == null) {
-            Book book = new Book(-1, title, author).push();
-        } else {
-            activeBook.setTitle(title);
-            activeBook.setAuthor(author);
-            activeBook.push();
+            activeBook = new Book();
         }
+
+        activeBook.setTitle(title);
+        activeBook.setAuthor(author);
+        activeBook.push();
+
+        BookStorage mainStorage = Database.getBookStoragesDb().getMainStorage();
+        mainStorage.getBooksIds().add(activeBook.getId());
+        mainStorage.push();
 
         FXMLHelper.alertAndWait("Success", "Operation succeeded", "Book was saved!");
 

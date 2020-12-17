@@ -1,3 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <users>
+    <user>
+        <id>1</id>
+        <login>a</login>
+        <password>a</password>
+        <position>Admin</position>
+        <name>admin</name>
+    </user>
+    <user>
+        <id>2</id>
+        <login>l</login>
+        <password>l</password>
+        <position>Librarian</position>
+        <name>librarian</name>
+    </user>
+    <user>
+        <id>3</id>
+        <login>r</login>
+        <password>r</password>
+        <position>Reader</position>
+        <name>reader</name>
+    </user>
 </users>

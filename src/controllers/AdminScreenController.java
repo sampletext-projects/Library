@@ -63,7 +63,7 @@ public class AdminScreenController implements FXMLHelper.PreloadableController, 
     public void onButtonEditClick(ActionEvent actionEvent) {
         int selectedIndex = booksTableView.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1) {
-            FXMLHelper.alertAndWait("Error", "Entity is not selected", "Please select an entity to edit!");
+            FXMLHelper.alertAndWait("Error", "Book is not selected", "Please select an entity to edit!");
             return;
         }
         Book book = booksTableView.getItems().get(selectedIndex);
@@ -75,7 +75,7 @@ public class AdminScreenController implements FXMLHelper.PreloadableController, 
     public void onButtonDeleteClick(ActionEvent actionEvent) {
         int selectedIndex = booksTableView.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1) {
-            FXMLHelper.alertAndWait("Error", "Entity is not selected", "Please select a book to delete!");
+            FXMLHelper.alertAndWait("Error", "Book is not selected", "Please select a book to delete!");
             return;
         }
         Book book = booksTableView.getItems().get(selectedIndex);

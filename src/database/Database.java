@@ -101,6 +101,23 @@ public abstract class Database<T extends Entity> {
         return "";
     }
 
+    public T selectOne(Predicate<T> predicate) {
+        try {
+            Document document = getDocument();
+            NodeList nodeList = document.getElementsByTagName(getNodeName());
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                T value = deserialize(nodeList.item(i));
+                if (predicate == null || predicate.test(value)) {
+                    return value;
+                }
+            }
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List<T> select(Predicate<T> predicate) {
         List<T> list = new ArrayList<>();
         try {
@@ -170,11 +187,7 @@ public abstract class Database<T extends Entity> {
     }
 
     public T getById(int id) {
-        List<T> select = select(t -> t.getId() == id);
-        if (select.isEmpty()) {
-            return null;
-        }
-        return select.get(0);
+        return selectOne(t -> t.getId() == id);
     }
 
     public int getMaxId() {

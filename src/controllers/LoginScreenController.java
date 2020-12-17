@@ -34,8 +34,8 @@ public class LoginScreenController {
                 adminScreenController.preload();
                 break;
             case "Librarian":
-                // ReaderScreenController userScreenController = FXMLHelper.loadScreenReturnController("LibrarianScreen");
-                // userScreenController.preload();
+                LibrarianScreenController librarianScreenController = FXMLHelper.loadScreenReturnController("LibrarianScreen");
+                librarianScreenController.preload();
                 break;
             case "Reader":
                 ReaderScreenController readerScreenController = FXMLHelper.loadScreenReturnController("ReaderScreen");

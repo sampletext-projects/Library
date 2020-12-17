@@ -9,6 +9,7 @@ import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class BookOrders extends Database<BookOrder> {
     @Override
@@ -31,10 +32,10 @@ public class BookOrders extends Database<BookOrder> {
         idElement.setTextContent(Integer.toString(bookOrder.getId()));
 
         Element bookIdElement = document.createElement("bookId");
-        idElement.setTextContent(Integer.toString(bookOrder.getBookId()));
+        bookIdElement.setTextContent(Integer.toString(bookOrder.getBookId()));
 
         Element userIdElement = document.createElement("userId");
-        idElement.setTextContent(Integer.toString(bookOrder.getUserId()));
+        userIdElement.setTextContent(Integer.toString(bookOrder.getUserId()));
 
         bookOrderElement.appendChild(idElement);
         bookOrderElement.appendChild(bookIdElement);
@@ -42,13 +43,21 @@ public class BookOrders extends Database<BookOrder> {
         return bookOrderElement;
     }
 
+    public List<BookOrder> getByUserId(int userId) {
+        return this.select(t->t.getUserId() == userId);
+    }
+
+    public List<BookOrder> getByBookId(int bookId) {
+        return this.select(t->t.getBookId() == bookId);
+    }
+
     @Override
     public String getFileName() {
-        return "bookOrders";
+        return "book_orders";
     }
 
     @Override
     public String getNodeName() {
-        return "bookOrder";
+        return "book_order";
     }
 }

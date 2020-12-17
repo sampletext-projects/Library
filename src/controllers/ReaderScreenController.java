@@ -40,21 +40,21 @@ public class ReaderScreenController implements FXMLHelper.PreloadableController,
     private TableColumn<BookOrder, String> columnUserAuthor;
 
     @FXML
-    private TableColumn<BookOrder, String> columnLibraryUserTitle;
+    private TableColumn<BookOrder, String> columnUserTitle;
 
     @SafeVarargs
     @Override
     public final <T> void preload(T... object) {
         if (User.activeUser != null) {
             greetingLabel.setText(String.format("Hello, %s %s", User.activeUser.getPosition(), User.activeUser.getName()));
-            userOrders = Database.getBookOrdersDb().select(t->t.getUserId() == User.activeUser.getId());
+            userOrders = Database.getBookOrdersDb().getByUserId(User.activeUser.getId());
         }
 
         columnLibraryAuthor.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getAuthor()));
         columnLibraryTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getTitle()));
 
         columnUserAuthor.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getBook().getAuthor()));
-        columnLibraryUserTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getBook().getTitle()));
+        columnUserTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getBook().getTitle()));
 
         mainStorage = Database.getBookStoragesDb().getMainStorage();
 
@@ -109,6 +109,7 @@ public class ReaderScreenController implements FXMLHelper.PreloadableController,
         mainStorage.getBooksIds().add(bookId);
         mainStorage.push().pull();
 
+        // update UI-only
         userOrders.remove(bookOrder);
         bookOrder.erase();
 

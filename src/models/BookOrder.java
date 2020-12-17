@@ -1,5 +1,6 @@
 package models;
 
+import database.BookOrders;
 import database.Database;
 
 import javax.xml.crypto.Data;
@@ -64,6 +65,11 @@ public class BookOrder extends Entity {
     public BookOrder erase() {
         super.erase();
         return this;
+    }
+
+    @Override
+    protected BookOrders getDatabase() {
+        return Database.getBookOrdersDb();
     }
 
     @Override

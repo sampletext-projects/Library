@@ -17,7 +17,7 @@ public class BookStorages extends Database<BookStorage> {
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
             shopStorage.setId(Integer.parseInt(Utils.getTag(element, "id")));
-            Node entitiesNode = Utils.getTagNode(element, "entities");
+            Node entitiesNode = Utils.getTagNode(element, "books");
             NodeList shop_entity_idNodes = ((Element)entitiesNode).getElementsByTagName("id");
             List<Integer> entities = new ArrayList<>();
             for (int i = 0; i < shop_entity_idNodes.getLength(); i++) {
@@ -37,7 +37,7 @@ public class BookStorages extends Database<BookStorage> {
         Element idElement = document.createElement("id");
         idElement.setTextContent(Integer.toString(storage.getId()));
 
-        Element entities_ids_element = document.createElement("entities");
+        Element entities_ids_element = document.createElement("books");
         for (int entity_id : storage.getBooksIds()) {
             Element entity_id_element = document.createElement("id");
             entity_id_element.setTextContent(Integer.toString(entity_id));
@@ -54,7 +54,7 @@ public class BookStorages extends Database<BookStorage> {
     }
 
     public BookStorage getByUserId(int userId) {
-        return select(t -> t.get).get(0);
+        return select(t -> t.getOwnerId() == userId).get(0);
     }
 
     @Override
@@ -64,6 +64,6 @@ public class BookStorages extends Database<BookStorage> {
 
     @Override
     public String getNodeName() {
-        return "storage";
+        return "book_storage";
     }
 }
